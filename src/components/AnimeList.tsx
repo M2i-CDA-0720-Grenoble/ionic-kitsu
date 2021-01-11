@@ -1,6 +1,7 @@
-import { IonItem, IonList, IonSpinner } from '@ionic/react';
+import { IonList, IonSpinner } from '@ionic/react';
 import React, { FC, useEffect, useState } from 'react';
 import { Anime } from '../models';
+import AnimePreview from './AnimePreview';
 
 // Définit la structure de la réponse attendue de l'API
 interface AllAnimeResponse {
@@ -48,9 +49,7 @@ const AnimeList: FC = () => {
       {
         animes.map(
           anime =>
-            <IonItem>
-              {anime.attributes.canonicalTitle}
-            </IonItem>
+            <AnimePreview anime={anime} />
         )
       }
     </IonList>
