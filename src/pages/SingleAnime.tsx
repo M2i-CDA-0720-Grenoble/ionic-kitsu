@@ -23,7 +23,7 @@ const SingleAnime: FC<RouteComponentProps<IParams>> = ({ match }) => {
       .then( response => response.json() )
       .then( (json: SingleAnimeResponse) => setAnime(json.data) )
     },
-    []
+    [id]
   );
 
   if (anime === null) {
