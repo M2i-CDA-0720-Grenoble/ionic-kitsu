@@ -42,7 +42,7 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({ anime }) => {
           typeof anime.relationships.episodes.data === 'undefined' ? null :
           anime.relationships.episodes.data.map(
             episode => 
-              <IonItem>
+              <IonItem routerLink={`/episodes/${episode.id}`}>
                 Episode {episode.attributes.number} - {episode.attributes.canonicalTitle}
               </IonItem>
           )

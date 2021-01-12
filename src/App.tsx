@@ -23,6 +23,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import SingleAnime from './pages/SingleAnime';
+import SingleEpisode from './pages/SingleEpisode';
 
 const App: React.FC = () => {
   return (
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/home" component={Home} exact={true} />
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route exact path="/animes/:id(\d+)" component={SingleAnime} />
+          <Route exact path="/episodes/:id(\d+)" component={SingleEpisode} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
