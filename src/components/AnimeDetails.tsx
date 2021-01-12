@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle } from "@ionic/react";
+import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonItem, IonList } from "@ionic/react";
 import React, { FC } from "react";
 import { Anime } from "../models";
 
@@ -31,6 +31,23 @@ const AnimeDetails: FC<AnimeDetailsProps> = ({ anime }) => {
       <IonCardContent>
         {anime.attributes.synopsis}
       </IonCardContent>
+
+      <IonCardHeader>
+        <IonCardTitle>
+          List of episodes
+        </IonCardTitle>
+      </IonCardHeader>
+      <IonList>
+        {
+          typeof anime.relationships.episodes.data === 'undefined' ? null :
+          anime.relationships.episodes.data.map(
+            episode => 
+              <IonItem>
+                Episode {episode.attributes.number} - {episode.attributes.canonicalTitle}
+              </IonItem>
+          )
+        }
+      </IonList>
     </IonCard>
   );
 }

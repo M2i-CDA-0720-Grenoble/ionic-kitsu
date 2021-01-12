@@ -1,4 +1,4 @@
-import { AnimeAttributes } from ".";
+import { AnimeAttributes, AnimeRelationships } from ".";
 
 export default interface Anime {
   id: string,
@@ -7,5 +7,5 @@ export default interface Anime {
     self: string,
   },
   attributes: AnimeAttributes,
-  relationships: any,
+  relationships: AnimeRelationships,
 }
