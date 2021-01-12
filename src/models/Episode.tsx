@@ -1,10 +1,5 @@
-import { EpisodeAttributes } from ".";
+import { Entity, EpisodeAttributes } from ".";
 
-export default interface Episode {
-  id: string,
-  links: {
-    self: string,
-  },
+export default interface Episode extends Entity {
   attributes: EpisodeAttributes,
-  relationships: any,
 }

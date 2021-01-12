@@ -1,23 +1,11 @@
-export default interface AnimeAttributes {
-  createdAt: string,
-  updatedAt: string,
-  slug: string,
+import { EntityAttributes, Image, Titles } from ".";
+
+export default interface AnimeAttributes extends EntityAttributes {
   synopsis: string,
   coverImageTopOffset: number,
-  titles: {
-    en?: string,
-    en_jp?: string,
-    ja_jp?: string,
-  },
+  titles: Titles,
   canonicalTitle: string,
-  coverImage?: {
-    tiny: string,
-    small: string,
-    medium: string,
-    large: string,
-    original: string,
-    meta: any,
-  },
+  coverImage?: Image,
   abbreviatedTitles: string[],
   averageRating: string,
   userCount: number,
@@ -25,14 +13,7 @@ export default interface AnimeAttributes {
   startDate: string,
   endDate: string,
   popularityRank: number,
-  posterImage: {
-    tiny: string,
-    small: string,
-    medium: string,
-    large: string,
-    original: string,
-    meta: any,
-  },
+  posterImage?: Image,
   ratingRank: number,
   ageRatingGuide: string,
   tba: string,

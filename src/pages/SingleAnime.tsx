@@ -2,23 +2,7 @@ import { IonContent, IonHeader, IonPage, IonSpinner, IonTitle, IonToolbar } from
 import React, { FC, useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import AnimeDetails from "../components/AnimeDetails";
-import { Anime, Episode } from "../models";
-
-interface SingleAnimeResponse {
-  data: Anime,
-}
-
-interface AnimeEpisodesResponse {
-  data: Episode[],
-  meta: {
-    count: number,
-  },
-  links: {
-    first: string,
-    next: string,
-    last: string,
-  },
-}
+import { Anime, ApiResponse, Episode } from "../models";
 
 interface IParams {
   id: string,
@@ -37,7 +21,7 @@ const SingleAnime: FC<RouteComponentProps<IParams>> = ({ match }) => {
       // Crée une fonction asynchrone qui permet d'aller récupérer les données
       const fetchData = async () => {
         // Attend d'avoir reçu les données de l'animé demandé
-        const animeJson: SingleAnimeResponse = await
+        const animeJson: ApiResponse<Anime> = await
           fetch(`https://kitsu.io/api/edge/anime/${id}`)
           .then( response => response.json() );
         // Range les données de l'animé dans un état
@@ -47,7 +31,7 @@ const SingleAnime: FC<RouteComponentProps<IParams>> = ({ match }) => {
         // Si l'animé reçu existe
         if (animeData !== null) {
           // Attend d'avoir reçu les données des épisodes associés à l'animé
-          const episodesJson: AnimeEpisodesResponse = await
+          const episodesJson: ApiResponse<Episode[]> = await
             fetch(animeData.relationships.episodes.links.related)
             .then( response => response.json() );
           // Construit un nouvel objet correspondant à l'animé

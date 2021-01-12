@@ -1,21 +1,8 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import AnimeList from '../components/AnimeList';
-import { Anime } from '../models';
+import { Anime, ApiResponse } from '../models';
 import './Home.css';
-
-// Définit la structure de la réponse attendue de l'API
-interface AllAnimeResponse {
-  data: Anime[],
-  meta: {
-    count: number,
-  },
-  links: {
-    first: string,
-    next: string,
-    last: string,
-  },
-}
 
 const Home: React.FC = () => {
   // Retient un état qui est appelé à contenir les données reçues de l'API
@@ -31,12 +18,9 @@ const Home: React.FC = () => {
     // Comportement à exécuter à chaque changement d'état
     () => {
       // Récupère la liste des 10 premiers animés de l'API
-      // fetchAllAnimes()
-      // .then( (json: AllAnimeResponse) => setAnimes(json.data) );
-
       fetch('https://kitsu.io/api/edge/anime')
       .then( response => response.json() )
-      .then( (json: AllAnimeResponse) => setAnimes(json.data) );
+      .then( (json: ApiResponse<Anime[]>) => setAnimes(json.data) );
     },
     // Liste de dépendances vide = exécution uniquement au montage
     []

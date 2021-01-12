@@ -1,8 +1,8 @@
-export default interface EpisodeAttributes {
+import { EntityAttributes, Titles } from ".";
+
+export default interface EpisodeAttributes extends EntityAttributes {
   airdate: string,
   canonicalTitle: string,
-  createdAt: string,
-  updatedAt: string,
   description: string,
   length: number,
   number: number,
@@ -10,9 +10,5 @@ export default interface EpisodeAttributes {
   seasonNumnber: number,
   synopsis: string,
   thumbnail?: string,
-  titles: {
-    en_us?: string,
-    en_jp?: string,
-    ja_jp?: string,
-  }
+  titles: Titles,
 }

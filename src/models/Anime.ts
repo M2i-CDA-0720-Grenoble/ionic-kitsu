@@ -1,11 +1,6 @@
-import { AnimeAttributes, AnimeRelationships } from ".";
+import { AnimeAttributes, AnimeRelationships, Entity } from ".";
 
-export default interface Anime {
-  id: string,
-  type: string,
-  links: {
-    self: string,
-  },
+export default interface Anime extends Entity {
   attributes: AnimeAttributes,
   relationships: AnimeRelationships,
 }
